@@ -33,7 +33,7 @@ public class HolidayExtractorService {
 
     public List<Holiday> extract() throws IOException {
         byte[] source = holidayClient.holidayXlslFile();
-        return null;
+        return map(source);
     }
 
     public static List<Holiday> map(final byte[] sourceFile) throws IOException {
