@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -21,6 +22,16 @@ public class HolidayController {
     @GetMapping(value = "year/{year}")
     public ResponseEntity<List<Holiday>> forYear(@PathVariable int year) {
         return ResponseEntity.ok(service.ofYear(year));
+    }
+
+    @GetMapping(value = "/day/{date}")
+    public ResponseEntity<Holiday> forDate(@PathVariable String date) {
+        return ResponseEntity.ok(service.ofDate(date));
+    }
+
+    @GetMapping(value = "/today")
+    public ResponseEntity<Holiday> today() {
+        return ResponseEntity.ok(service.ofDay(LocalDate.now()));
     }
 
 }
