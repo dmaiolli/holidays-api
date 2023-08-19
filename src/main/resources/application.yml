@@ -8,12 +8,4 @@ spring:
 holidays:
   location: https://www.anbima.com.br/feriados/arqs/feriados_nacionais.xls
 
-server:
-  tomcat:
-    threads:
-      max: 400
-      min-spare: 50
-  servlet:
-    context-path: /api/v1
-
 logging.pattern.console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) %magenta([%t]) %m%n"
