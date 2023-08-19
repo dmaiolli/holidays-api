@@ -49,18 +49,24 @@ public class HolidayExtractorService {
                 if(!first(row)) {
                     holidays.add(Holiday.builder()
                             .date(getHolidayLocalDate(row))
-                            .description("TODO get description")
-                            .isHoliday(false)
+                            .description(getDescription(row))
+                            .isHoliday(true)
                             .build());
                 }
             }
         }
 
+        return holidays;
     }
 
     private static LocalDate getHolidayLocalDate(final Row row) {
         Cell date = row.getCell(DATE_CELL);
         return date.getDateCellValue().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    private static String getDescription(final Row row) {
+        Cell description = row.getCell(DESCRIPTION_CELL);
+        return description.getStringCellValue();
     }
 
     private static boolean last(final Row row) {
